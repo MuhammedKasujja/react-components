@@ -33,7 +33,7 @@ const SideBar: React.FC = () => {
   });
   return (
     <>
-      <div className="w-80 bg-[#1a233a] p-4 rounded-none overflow-y-scroll text-[#8a99b5] hover:overflow-y-auto scrollbar-thumb-[#8a99b5] scrollbar-thin">
+      <div className="w-80 bg-[#1a233a] p-4 rounded-none overflow-y-scroll text-[#8a99b5] hover:overflow-y-auto scrollbar-thumb-[#8a99b5] scrollbar-thin hidden md:block">
         {menuContent}
       </div>
     </>

@@ -120,8 +120,8 @@ function App() {
                 // onTimeChange={(time)=>setSelectedDate(time)}
               />
               <Chip title="Hello World" isClickable />
-              <Spinner color="secondary" />
-              <Button type="submit" variant="contained">
+              <Spinner />
+              <Button type="submit" variant="contained" isLoading>
                 Submit
               </Button>
               <Button
@@ -168,6 +168,11 @@ function App() {
                 { label: "Muhammed" },
               ]}
             />
+            <Drawer open={open} onClose={() => setOpen(false)} size="sm">
+            {totalItems.map((i) => (
+                  <p key={i}>Hello Muhammed {i}</p>
+                ))}
+            </Drawer>
           </div>
         </div>
       </div>
