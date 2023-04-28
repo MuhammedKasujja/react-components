@@ -1,0 +1,28 @@
+.accordion {
+    @apply bg-white p-3 rounded shadow border-2 border-[var(--primary-color-500)];
+
+    .accordion_header {
+        @apply flex justify-between cursor-pointer items-center font-bold
+    }
+    
+    .accordion_body {
+        @apply h-0 overflow-hidden transition-all;
+
+        &__open {
+            @apply min-h-min overflow-visible mt-4 transition-all
+        }
+    }
+    
+    &.accordion_disabled{
+        @apply bg-slate-200 text-slate-600 cursor-not-allowed border-[var(--primary-color-300)];
+
+        .accordion_header{
+            @apply  cursor-not-allowed select-none;
+
+            img{
+                @apply bg-slate-200
+            }
+        }
+    } 
+}
+

@@ -1,0 +1,7 @@
+.breadcrumb_item{
+    @apply cursor-pointer;
+
+    &.active{
+      @apply text-[var(--primary-color-500)] font-semibold
+    }
+}
