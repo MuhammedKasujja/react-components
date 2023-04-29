@@ -1,6 +1,8 @@
 import SideBarMenuItem from "./SideBarMenuItem";
 import menus from "./Menus";
 import { useState } from "react";
+import classes from "./Sidebar.module.scss";
+import { mergeClassNames } from "src/utils/utils";
 
 const SideBar: React.FC = () => {
   const [selectedMenu, setActive] = useState<string | undefined>();
@@ -9,7 +11,7 @@ const SideBar: React.FC = () => {
     if (item.navheader)
       return (
         <p
-          className="text-white px-2 py-2 text-left uppercase decoration-4"
+          className={mergeClassNames(classes.sidebar, classes.hearder)}
           key={item.name}
         >
           {item.navheader}
@@ -33,7 +35,7 @@ const SideBar: React.FC = () => {
   });
   return (
     <>
-      <div className="w-80 bg-[#1a233a] p-4 rounded-none overflow-y-scroll text-[#8a99b5] hover:overflow-y-auto scrollbar-thumb-[#8a99b5] scrollbar-thin hidden md:block">
+      <div className={mergeClassNames(classes.sidebar, classes.body)}>
         {menuContent}
       </div>
     </>

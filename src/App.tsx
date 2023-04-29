@@ -13,6 +13,7 @@ import {
   Modal,
   Accordion,
   Sidebar,
+  Card,
 } from "./components";
 import Breadcrumb from "./components/breadcrumb/Breadcrumb";
 
@@ -146,15 +147,18 @@ function App() {
                 ))}
               </Modal>
             </form>
-            <Accordion title="Accordion Title">
-              <p>
-                Accordion Contenhghghghghghghg Accordion Content Accordion
-                Content
-              </p>
-              <p>Accordion Content Accordion Content</p>
-              <p>Accordion Content</p>
-              <p>Accordion Content</p>
-            </Accordion>
+            <div>
+              <Accordion title="Accordion Title">
+                <p>
+                  Accordion Contenhghghghghghghg Accordion Content Accordion
+                  Content
+                </p>
+                <p>Accordion Content Accordion Content</p>
+                <p>Accordion Content</p>
+                <p>Accordion Content</p>
+              </Accordion>
+              <Card/>
+            </div>
             <Accordion title="Accordion Title">
               <p>Accordion Content Accordion Content</p>
               <p>Accordion Content</p>
@@ -169,9 +173,9 @@ function App() {
               ]}
             />
             <Drawer open={open} onClose={() => setOpen(false)} size="sm">
-            {totalItems.map((i) => (
-                  <p key={i}>Hello Muhammed {i}</p>
-                ))}
+              {totalItems.map((i) => (
+                <p key={i}>Hello Muhammed {i}</p>
+              ))}
             </Drawer>
           </div>
         </div>

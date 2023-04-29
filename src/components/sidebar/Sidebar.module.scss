@@ -1,0 +1,8 @@
+.sidebar {
+  &.body {
+    @apply w-80 bg-[#1a233a] p-4 rounded-none overflow-y-scroll text-[#8a99b5] hover:overflow-y-auto scrollbar-thumb-[#8a99b5] scrollbar-thin hidden md:block;
+  }
+  &.hearder {
+    @apply text-white px-2 py-2 text-left uppercase decoration-4;
+  }
+}
