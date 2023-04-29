@@ -14,6 +14,7 @@ import {
   Accordion,
   Sidebar,
   Card,
+  Tabs
 } from "./components";
 import Breadcrumb from "./components/breadcrumb/Breadcrumb";
 
@@ -148,7 +149,8 @@ function App() {
               </Modal>
             </form>
             <div>
-              <Accordion title="Accordion Title">
+              <Tabs/>
+              {/* <Accordion title="Accordion Title">
                 <p>
                   Accordion Contenhghghghghghghg Accordion Content Accordion
                   Content
@@ -157,7 +159,7 @@ function App() {
                 <p>Accordion Content</p>
                 <p>Accordion Content</p>
               </Accordion>
-              <Card/>
+              <Card/> */}
             </div>
             <Accordion title="Accordion Title">
               <p>Accordion Content Accordion Content</p>
