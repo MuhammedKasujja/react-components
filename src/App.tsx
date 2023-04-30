@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import {
   Button,
   Checkbox,
@@ -14,19 +14,80 @@ import {
   Accordion,
   Sidebar,
   Navbar,
+  Card,
+  Tabs,
+  Table
 } from "./components";
 import Breadcrumb from "./components/breadcrumb/Breadcrumb";
+import { ColumnDef } from "@tanstack/react-table";
+
+type TableItem = {
+  name: string;
+  price: number;
+  quantity: number;
+  delete: boolean
+  show: boolean
+}
 
 function App() {
   const [checked, setChecked] = useState(false);
   const [open, setOpen] = useState(false);
+  const [cartTotal, setCartTotal] = useState(500);
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined);
 
   const totalItems = Array.from(Array(80).keys());
 
+  const dummyData = () => {
+    const items = [];
+    for (let i = 0; i < 10; i++) {
+      items.push({
+        id: i,
+        name: `Item ${i}`,
+        price: 100,
+        quantity: 1,
+        delete: false,
+        show: true
+      });
+    }
+    return items;
+  }
+
+  const cols = useMemo<ColumnDef<TableItem>[]>(
+    () => [
+      {
+        header: 'Name',
+        cell: (row) => row.renderValue(),
+        accessorKey: 'name',
+        footer: 'Total',
+      },
+      {
+        header: 'Price',
+        cell: (row) => row.renderValue(),
+        accessorKey: 'price',
+        footer: () => cartTotal,
+      },
+      {
+        header: 'Quantity',
+        cell: (row) => row.renderValue(),
+        accessorKey: 'quantity',
+      },
+      {
+        header: 'Quantity',
+        cell: (row) => row.renderValue(),
+        accessorKey: 'quantity',
+      },
+      {
+        header: 'Show',
+        cell: (row) => row.renderValue(),
+        accessorKey: 'name',
+      }
+    ],
+    [cartTotal]
+  );
+
   return (
     <>
-      <div className="bg-slate-200 p-0 h-screen overflow-hidden">
+      <div className="h-screen p-0 overflow-hidden bg-slate-200">
         <div className="flex h-full">
           <Sidebar />
 
@@ -34,8 +95,18 @@ function App() {
           <div className="flex flex-col w-full">
             <Navbar />
             <main className="p-4 overflow-y-auto">
-              <div className="flex gap-4 bg-slate-300 p-4 items-start flex-wrap w-full rounded-lg ">
-                <form
+              <div className="py-3">
+                <Breadcrumb
+                  items={[
+                    { label: "Home" },
+                    { label: "Users", isActive: true },
+                    { label: "Muhammed" },
+                  ]}
+                />
+              </div>
+
+              <div className="flex flex-wrap items-start w-full gap-4 p-4 rounded-lg bg-slate-300 ">
+                {/* <form
                   className="flex flex-col gap-4"
                   onSubmit={(event: React.FormEvent<HTMLFormElement>) => {
                     event.preventDefault();
@@ -108,8 +179,8 @@ function App() {
                       },
                     ]}
                   />
-                  <Switch name="select" isDisabled />
-                  <Checkbox size="md" name="test" />
+                  <Switch name="select" />
+                  <Checkbox size="md" name="test" onCheckChange={() => setChecked(prev => !prev)} />
                   <DatePicker
                     name="current_date"
                     onDateChange={(date) => setSelectedDate(date)}
@@ -139,67 +210,7 @@ function App() {
                   </Button>
                   <TextField name="name" error />
                   <TextField name="aasim" />
-                  <Select
-                    name="asasa"
-                    options={[
-                      {
-                        label: "aaa",
-                        value: "aaa",
-                      },
-                      {
-                        label: "aaa",
-                        value: "yu",
-                      },
-                      {
-                        label: "aaa",
-                        value: "rtr",
-                      },
-                      {
-                        label: "aaa",
-                        value: "tr",
-                      },
-                      {
-                        label: "aaa",
-                        value: "ee",
-                      },
-                      {
-                        label: "aaa",
-                        value: "ff",
-                      },
-                      {
-                        label: "aaa",
-                        value: "ew",
-                      },
-                      {
-                        label: "aaa",
-                        value: "df",
-                      },
-                      {
-                        label: "aaa",
-                        value: "fdd",
-                      },
-                      {
-                        label: "aaa",
-                        value: "aaa",
-                      },
-                      {
-                        label: "aaa",
-                        value: "yu",
-                      },
-                      {
-                        label: "aaa",
-                        value: "rtr",
-                      },
-                      {
-                        label: "aaa",
-                        value: "tr",
-                      },
-                      {
-                        label: "aaa",
-                        value: "ee",
-                      },
-                    ]}
-                  />
+
                   <Switch name="select" isDisabled />
                   <Checkbox size="md" name="test" />
                   <DatePicker
@@ -242,28 +253,25 @@ function App() {
                     ))}
                   </Modal>
                 </form>
-                <Accordion title="Accordion Title">
-                  <p>
-                    Accordion Contenhghghghghghghg Accordion Content Accordion
-                    Content
-                  </p>
-                  <p>Accordion Content Accordion Content</p>
-                  <p>Accordion Content</p>
-                  <p>Accordion Content</p>
-                </Accordion>
-                <Accordion title="Accordion Title">
-                  <p>Accordion Content Accordion Content</p>
-                  <p>Accordion Content</p>
-                  <p>Accordion Content</p>
-                  <p>Accordion Content</p>
-                </Accordion>
-                <Breadcrumb
-                  items={[
-                    { label: "Home" },
-                    { label: "Users", isActive: true },
-                    { label: "Muhammed" },
-                  ]}
-                />
+                <div>
+                  <Accordion title="Accordion Title">
+                    <p>
+                      Accordion Contenhghghghghghghg Accordion Content Accordion
+                      Content
+                    </p>
+                    <p>Accordion Content Accordion Content</p>
+                    <p>Accordion Content</p>
+                    <p>Accordion Content</p>
+                  </Accordion>
+                  <Tabs></Tabs>
+                </div> */}
+                <div className="w-full px-10 py-5">
+                  <Card>
+                    <Table data={dummyData()} columns={cols} showFooter />
+                  </Card>
+                  {/* .... */}
+                </div>
+
                 <Drawer open={open} onClose={() => setOpen(false)} size="sm">
                   {totalItems.map((i) => (
                     <p key={i}>Hello Muhammed {i}</p>

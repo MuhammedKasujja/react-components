@@ -1,10 +1,10 @@
-import { BreadcrumbItemProps } from "./BreadcrumbItem.type";
+import { IBreadcrumbItemProps } from "./BreadcrumbItem.type";
 import { mergeClassNames } from "src/utils/utils";
 
 import classes from "./BreadcrumbItem.module.scss";
 
-const BreadcrumbItem: React.FC<BreadcrumbItemProps> = (props) => {
-  const { icon, isActive, label } = props;
+const BreadcrumbItem: React.FC<IBreadcrumbItemProps> = (props) => {
+  const { icon, isActive, label, isLast } = props;
   return (
     <div
       className={mergeClassNames(
@@ -13,6 +13,7 @@ const BreadcrumbItem: React.FC<BreadcrumbItemProps> = (props) => {
       )}
     >
       {label}
+      {!isLast && <span className="pl-1 text-black">{'>'}</span>}
     </div>
   );
 };
