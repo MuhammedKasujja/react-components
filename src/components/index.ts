@@ -11,3 +11,4 @@ export { default as Switch } from './switch/Switch'
 export { default as TextField } from './textfield/Textfield'
 export { default as TimePicker } from './timepicker/TimePicker'
 export { default as Sidebar } from './sidebar/SideBar'
+export { default as Navbar } from "./narbar/Navbar"

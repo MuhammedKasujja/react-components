@@ -21,7 +21,7 @@ const Accordion = (props: AccordionProps) => {
       <div
         className={classes.accordion_header}
         onClick={
-          onChange ? onChange : !isDisabled ? () => setIsAccordionOpen(!isAccordionOpen) : () => {}
+          onChange ? onChange : !isDisabled ? () => setIsAccordionOpen(!isAccordionOpen) : () => { }
         }
       >
         {title}
