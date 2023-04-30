@@ -70,16 +70,6 @@ function App() {
         header: 'Quantity',
         cell: (row) => row.renderValue(),
         accessorKey: 'quantity',
-      },
-      {
-        header: 'Quantity',
-        cell: (row) => row.renderValue(),
-        accessorKey: 'quantity',
-      },
-      {
-        header: 'Show',
-        cell: (row) => row.renderValue(),
-        accessorKey: 'name',
       }
     ],
     [cartTotal]

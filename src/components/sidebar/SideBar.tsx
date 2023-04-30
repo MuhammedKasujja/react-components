@@ -3,9 +3,11 @@ import menus from "./Menus";
 import { useState } from "react";
 import classes from "./Sidebar.module.scss";
 import { mergeClassNames } from "src/utils/utils";
+import { useSidebarContext } from "../narbar/context";
 
 const SideBar: React.FC = () => {
   const [selectedMenu, setActive] = useState<string | undefined>();
+  const { visible } = useSidebarContext()
 
   const menuContent = menus.map((item) => {
     if (item.navheader)
@@ -34,10 +36,10 @@ const SideBar: React.FC = () => {
     }
   });
   return (
-    <>
+    <>{visible ?
       <div className={mergeClassNames(classes.sidebar, classes.body)}>
         {menuContent}
-      </div>
+      </div> : null}
     </>
   );
 };
