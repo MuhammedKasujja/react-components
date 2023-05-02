@@ -17,6 +17,7 @@ import {
   Card,
   Tabs,
   Table,
+  Dropzone,
 } from "./components";
 import Breadcrumb from "./components/breadcrumb/Breadcrumb";
 import { ColumnDef } from "@tanstack/react-table";
@@ -304,15 +305,13 @@ function App() {
                     </div>
                   }
                 >
-                  <TextField />
-                  <TextField />
+                  <Dropzone />
                 </Card>
                 <Button
                   type="button"
                   onClick={() => {
                     setOpen((prev) => !prev);
                   }}
-                  variant="danger"
                 >
                   Open Drawer
                 </Button>

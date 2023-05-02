@@ -12,6 +12,7 @@ export { default as TextField } from "./textfield/Textfield";
 export { default as TimePicker } from "./timepicker/TimePicker";
 export { default as Sidebar } from "./sidebar/SideBar";
 export { default as Card } from "./card/Card";
-export { default as Tabs } from "./tabs/Tabs"
-export { default as Navbar } from "./narbar/Navbar"
-export { default as Table } from "./table/Table"
+export { default as Tabs } from "./tabs/Tabs";
+export { default as Navbar } from "./narbar/Navbar";
+export { default as Table } from "./table/Table";
+export { default as Dropzone } from "./dropzone/Dropzone";
