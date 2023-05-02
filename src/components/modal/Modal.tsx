@@ -1,72 +1,69 @@
-import React, { useEffect, useState } from 'react'
-import { createPortal } from 'react-dom'
-import { mergeClassNames } from 'src/utils/utils'
+import React, { useEffect } from "react";
+import { createPortal } from "react-dom";
+import { mergeClassNames } from "src/utils/utils";
 
-import classes from './Modal.module.scss'
+import classes from "./Modal.module.scss";
 
 type ModalProps = {
-  open: boolean
-  onClose: () => void
-  children?: React.ReactNode
-  closeOnOverlayClick?: boolean
-  size?: 'sm' | 'md' | 'lg'
-  verticalAlign?: 'top' | 'center' | 'bottom'
-  title?: string | React.ReactNode
-  footer?: React.ReactNode
-}
+  open: boolean;
+  onClose: () => void;
+  children?: React.ReactNode;
+  autoHide?: boolean;
+  size?: "sm" | "md" | "lg";
+  verticalAlign?: "top" | "center" | "bottom";
+  title?: string | React.ReactNode;
+  footer?: React.ReactNode;
+};
 
 const defaultModalProps: ModalProps = {
   open: false,
   onClose: () => {},
   children: null,
-  closeOnOverlayClick: false,
-  size: 'md',
-  verticalAlign: 'top',
+  autoHide: false,
+  size: "md",
+  verticalAlign: "top",
   title: null,
   footer: null,
-}
+};
 
-const Modal = (props: ModalProps & React.ComponentProps<'div'>) => {
+const Modal = (props: ModalProps & React.ComponentProps<"div">) => {
   const {
     open,
     onClose,
     children,
-    closeOnOverlayClick,
+    autoHide,
     size,
     verticalAlign,
     title,
     footer,
     ...rest
-  } = props
+  } = props;
 
   const modalSizes = {
     sm: classes.modal_sm,
     md: classes.modal_md,
     lg: classes.modal_lg,
-  }
+  };
 
   const modalPosition = {
     top: classes.modal_top,
     center: classes.modal_center,
     bottom: classes.modal_bottom,
-  }
+  };
 
-  const [containerToLoad, setContainerToLoad] = useState<HTMLElement | undefined>(undefined);
 
   useEffect(() => {
     // Disable background scroll when drawer is open
     if (open) {
-      document.body.style.overflow = 'hidden'
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = ''
+      document.body.style.overflow = "";
     }
     // Re-enable scrolling when component unmounts
     return () => {
-      document.body.style.overflow = ''
-    }
-  }, [open])
-
-  
+      document.body.style.overflow = "";
+    };
+  }, [open]);
 
   return (
     <>
@@ -75,18 +72,28 @@ const Modal = (props: ModalProps & React.ComponentProps<'div'>) => {
           <div
             className={mergeClassNames(
               classes.modal_container,
-              modalPosition[verticalAlign || 'top'],
+              modalPosition[verticalAlign || "top"]
             )}
-            onClick={closeOnOverlayClick ? onClose : () => {}}
+            onClick={autoHide ? onClose : () => {}}
           >
             <div
-              className={mergeClassNames(classes.modal, modalSizes[size || 'md'])}
-              onClick={(event: React.MouseEvent<HTMLDivElement>) => event.stopPropagation()}
+              className={mergeClassNames(
+                classes.modal,
+                modalSizes[size || "md"]
+              )}
+              onClick={(event: React.MouseEvent<HTMLDivElement>) =>
+                event.stopPropagation()
+              }
               {...rest}
             >
               <div className={mergeClassNames(classes.modal_header)}>
-                <h3 className={mergeClassNames(classes.modal_title)}>{title}</h3>
-                <span className={mergeClassNames(classes.modal_close)} onClick={onClose}>
+                <h3 className={mergeClassNames(classes.modal_title)}>
+                  {title}
+                </h3>
+                <span
+                  className={mergeClassNames(classes.modal_close)}
+                  onClick={onClose}
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -100,16 +107,22 @@ const Modal = (props: ModalProps & React.ComponentProps<'div'>) => {
                   </svg>
                 </span>
               </div>
-              <div className={mergeClassNames(classes.modal_body)}>{children}</div>
-              {footer && <div className={mergeClassNames(classes.modal_footer)}>{footer}</div>}
+              <div className={mergeClassNames(classes.modal_body)}>
+                {children}
+              </div>
+              {footer && (
+                <div className={mergeClassNames(classes.modal_footer)}>
+                  {footer}
+                </div>
+              )}
             </div>
           </div>,
-          document.body,
+          document.body
         )}
     </>
-  )
-}
+  );
+};
 
-Modal.defaultProps = defaultModalProps
+Modal.defaultProps = defaultModalProps;
 
-export default Modal
+export default Modal;

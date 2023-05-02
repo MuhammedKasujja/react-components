@@ -16,7 +16,7 @@ import {
   Navbar,
   Card,
   Tabs,
-  Table
+  Table,
 } from "./components";
 import Breadcrumb from "./components/breadcrumb/Breadcrumb";
 import { ColumnDef } from "@tanstack/react-table";
@@ -25,9 +25,9 @@ type TableItem = {
   name: string;
   price: number;
   quantity: number;
-  delete: boolean
-  show: boolean
-}
+  delete: boolean;
+  show: boolean;
+};
 
 function App() {
   const [checked, setChecked] = useState(false);
@@ -35,7 +35,7 @@ function App() {
   const [cartTotal, setCartTotal] = useState(500);
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined);
 
-  const totalItems = Array.from(Array(80).keys());
+  const totalItems = Array.from(Array(100).keys());
 
   const dummyData = () => {
     const items = [];
@@ -46,31 +46,31 @@ function App() {
         price: 100,
         quantity: 1,
         delete: false,
-        show: true
+        show: true,
       });
     }
     return items;
-  }
+  };
 
   const cols = useMemo<ColumnDef<TableItem>[]>(
     () => [
       {
-        header: 'Name',
+        header: "Name",
         cell: (row) => row.renderValue(),
-        accessorKey: 'name',
-        footer: 'Total',
+        accessorKey: "name",
+        footer: "Total",
       },
       {
-        header: 'Price',
+        header: "Price",
         cell: (row) => row.renderValue(),
-        accessorKey: 'price',
+        accessorKey: "price",
         footer: () => cartTotal,
       },
       {
-        header: 'Quantity',
+        header: "Quantity",
         cell: (row) => row.renderValue(),
-        accessorKey: 'quantity',
-      }
+        accessorKey: "quantity",
+      },
     ],
     [cartTotal]
   );
@@ -262,32 +262,34 @@ function App() {
                   {/* .... */}
                 </div>
 
-                {/* <Drawer open={open} onClose={() => setOpen(false)} size="sm">
+                <Drawer open={open} onClose={() => setOpen(false)} size="sm">
                   {totalItems.map((i) => (
                     <p key={i}>Hello Muhammed {i}</p>
                   ))}
-                </Drawer> */}
-                <Modal
-                    open={open}
-                    onClose={() => setOpen(false)}
-                    title={"Hello Muhammed"}
-                    verticalAlign="center"
-                    size="sm"
-                    footer={"Good luck"}
-                  >
-                    {totalItems.map((i) => (
-                      <p key={i}>Hello Muhammed {i}</p>
-                    ))}
-                  </Modal>
+                </Drawer>
+                {/* <Modal
+                  open={open}
+                  autoHide
+                  onClose={() => setOpen(false)}
+                  title={"Hello Muhammed"}
+                  verticalAlign="center"
+                  size="sm"
+                  footer={"Good luck"}
+                >
+                  {totalItems.map((i) => (
+                    <p key={i}>Hello Muhammed {i}</p>
+                  ))}
+                </Modal> */}
+
                 <Button
-                    type="button"
-                    onClick={() => {
-                      setOpen((prev) => !prev);
-                    }}
-                    variant="danger"
-                  >
-                    Open Drawer
-                  </Button>
+                  type="button"
+                  onClick={() => {
+                    setOpen((prev) => !prev);
+                  }}
+                  variant="danger"
+                >
+                  Open Drawer
+                </Button>
               </div>
             </main>
           </div>

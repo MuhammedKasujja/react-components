@@ -8,7 +8,7 @@ type DrawerProps = {
   open: boolean
   onClose: () => void
   children?: React.ReactNode
-  closeOnOverlayClick?: boolean
+  autoHide?: boolean
   size?: 'sm' | 'md' | 'lg'
   position?: 'top' | 'bottom' | 'right' | 'left'
   title?: string | React.ReactNode
@@ -19,7 +19,7 @@ const defaultDrawerProps: DrawerProps = {
   open: false,
   onClose: () => {},
   children: null,
-  closeOnOverlayClick: false,
+  autoHide: true,
   size: 'md',
   position: 'right',
   title: null,
@@ -27,7 +27,7 @@ const defaultDrawerProps: DrawerProps = {
 }
 
 const Drawer = (props: DrawerProps & React.ComponentProps<'div'>) => {
-  const { open, onClose, children, closeOnOverlayClick, size, position, title, footer, ...rest } =
+  const { open, onClose, children, autoHide, size, position, title, footer, ...rest } =
     props
 
   const drawerSizes = {
@@ -65,7 +65,7 @@ const Drawer = (props: DrawerProps & React.ComponentProps<'div'>) => {
               classes.drawer_container,
               drawerPosition[position || 'right'],
             )}
-            onClick={closeOnOverlayClick ? onClose : () => {}}
+            onClick={autoHide ? onClose : () => {}}
           >
             <div
               className={mergeClassNames(classes.drawer, drawerSizes[size || 'md'])}
