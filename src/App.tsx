@@ -280,7 +280,33 @@ function App() {
                     <p key={i}>Hello Muhammed {i}</p>
                   ))}
                 </Modal> */}
+                <Card header="Create user">
+                  <TextField />
+                  <TextField />
+                  <TextField />
+                  <TextField />
+                  <TextField />
+                  <TextField />
+                  <TextField />
+                </Card>
 
+                <Card
+                  header={
+                    <div className="flex justify-between">
+                      <p>Add User</p>
+                      <Button
+                        onClick={() => {
+                          setOpen((prev) => !prev);
+                        }}
+                      >
+                        Open Drawer
+                      </Button>
+                    </div>
+                  }
+                >
+                  <TextField />
+                  <TextField />
+                </Card>
                 <Button
                   type="button"
                   onClick={() => {

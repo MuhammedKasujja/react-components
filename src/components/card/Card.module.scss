@@ -1,3 +1,10 @@
 .card {
-    @apply p-4 bg-white rounded-lg shadow-md w-full my-4;
+    @apply p-5 bg-white rounded-lg shadow-md w-full my-4;
+
+    .card_header{
+        @apply mb-4;
+    }
+    .card_body{
+        
+    }
 }
