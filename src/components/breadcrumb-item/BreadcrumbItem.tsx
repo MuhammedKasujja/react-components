@@ -8,12 +8,18 @@ const BreadcrumbItem: React.FC<IBreadcrumbItemProps> = (props) => {
   return (
     <div
       className={mergeClassNames(
+        classes.breadcrumb_item,
         isActive ? classes.active : "",
-        classes.breadcrumb_item
       )}
     >
       {label}
-      {!isLast && <span className="pl-1 text-black">{'>'}</span>}
+      {!isLast && (
+        <span
+          className={mergeClassNames(classes.icon)}
+        >
+          {/* {">"} */}
+        </span>
+      )}
     </div>
   );
 };

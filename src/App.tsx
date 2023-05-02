@@ -262,11 +262,32 @@ function App() {
                   {/* .... */}
                 </div>
 
-                <Drawer open={open} onClose={() => setOpen(false)} size="sm">
+                {/* <Drawer open={open} onClose={() => setOpen(false)} size="sm">
                   {totalItems.map((i) => (
                     <p key={i}>Hello Muhammed {i}</p>
                   ))}
-                </Drawer>
+                </Drawer> */}
+                <Modal
+                    open={open}
+                    onClose={() => setOpen(false)}
+                    title={"Hello Muhammed"}
+                    verticalAlign="center"
+                    size="sm"
+                    footer={"Good luck"}
+                  >
+                    {totalItems.map((i) => (
+                      <p key={i}>Hello Muhammed {i}</p>
+                    ))}
+                  </Modal>
+                <Button
+                    type="button"
+                    onClick={() => {
+                      setOpen((prev) => !prev);
+                    }}
+                    variant="danger"
+                  >
+                    Open Drawer
+                  </Button>
               </div>
             </main>
           </div>

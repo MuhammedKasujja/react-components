@@ -1,7 +1,10 @@
 .breadcrumb_item{
-    @apply cursor-pointer;
+    @apply cursor-pointer select-none;
 
     &.active{
-      @apply text-[var(--primary-color-500)] font-semibold
+      @apply text-[var(--primary-color-500)] font-semibold;
+    }
+    .icon{
+      @apply pl-1 text-black after:content-['>'];
     }
 }

@@ -104,7 +104,7 @@ const Modal = (props: ModalProps & React.ComponentProps<'div'>) => {
               {footer && <div className={mergeClassNames(classes.modal_footer)}>{footer}</div>}
             </div>
           </div>,
-          document.getElementById('rtc-portal') as HTMLElement,
+          document.body,
         )}
     </>
   )
