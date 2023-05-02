@@ -16,3 +16,5 @@ export { default as Tabs } from "./tabs/Tabs";
 export { default as Navbar } from "./narbar/Navbar";
 export { default as Table } from "./table/Table";
 export { default as Dropzone } from "./dropzone/Dropzone";
+export { default as FileInput} from "./file-input/FileInput"
+export {default as TextArea} from "./textarea/TextArea"

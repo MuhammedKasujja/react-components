@@ -18,6 +18,8 @@ import {
   Tabs,
   Table,
   Dropzone,
+  FileInput,
+  TextArea,
 } from "./components";
 import Breadcrumb from "./components/breadcrumb/Breadcrumb";
 import { ColumnDef } from "@tanstack/react-table";
@@ -282,13 +284,15 @@ function App() {
                   ))}
                 </Modal> */}
                 <Card header="Create user">
-                  <TextField />
-                  <TextField />
-                  <TextField />
-                  <TextField />
-                  <TextField />
-                  <TextField />
-                  <TextField />
+                  <div className="grid grid-cols-2 gap-4">
+                    <TextField />
+                    <TextField />
+                    <TextField />
+                    <TextField />
+                    <TextField />
+                    <TextField />
+                    <TextField />
+                  </div>
                 </Card>
 
                 <Card
@@ -306,6 +310,12 @@ function App() {
                   }
                 >
                   <Dropzone />
+                  <FileInput />
+                  <TextArea
+                    label="Your comment"
+                    rows={5}
+                    placeholder="Holla we dem boys"
+                  />
                 </Card>
                 <Button
                   type="button"
