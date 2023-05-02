@@ -11,6 +11,7 @@ type ButtonProps = {
   isDisabled?: boolean
   isLoading?: boolean
   ripple?: boolean
+  outlined?:boolean
 }
 
 const defaultButtonProps: ButtonProps = {
@@ -19,10 +20,11 @@ const defaultButtonProps: ButtonProps = {
   isDisabled: false,
   isLoading: false,
   ripple: false,
+  outlined: false
 }
 
 const Button = (props: ButtonProps & React.ComponentProps<'button'>) => {
-  const { children, isLoading, isDisabled, variant, ripple, ...rest } = props
+  const { children, isLoading, isDisabled, variant, outlined, ripple, ...rest } = props
 
   const buttonSizes = {
     sm: classes.button_sm,
@@ -44,6 +46,7 @@ const Button = (props: ButtonProps & React.ComponentProps<'button'>) => {
     buttonSizes[rest.size || 'md'],
     buttonVariants[variant || 'contained'],
     (isDisabled || isLoading) && classes.button_disabled,
+    outlined && classes.outlined,
     rest.className && rest.className,
   )
 
