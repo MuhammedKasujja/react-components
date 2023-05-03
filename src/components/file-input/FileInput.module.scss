@@ -14,5 +14,11 @@
     &_hint {
       @apply mt-1 text-sm text-gray-500 dark:text-gray-300;
     }
+
+    &_preview {
+      .placeholder {
+        @apply object-fill h-48 w-96 bg-gray-100 rounded-md items-center;
+      }
+    }
   }
 }
