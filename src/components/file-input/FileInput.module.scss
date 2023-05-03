@@ -1,7 +1,9 @@
+@import "../../styles/mixins.scss";
+
 .file_input {
   &.file_input {
     &_label {
-      @apply block mb-2 text-sm font-medium text-gray-900 dark:text-white;
+      @include label-default;
     }
 
     &_input {

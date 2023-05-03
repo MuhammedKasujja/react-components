@@ -9,3 +9,7 @@
 @mixin input-lg {
     @apply px-6 py-3 text-lg;
 }
+
+@mixin label-default {
+    @apply block mb-2 text-sm font-medium text-gray-900 dark:text-white select-none;
+}
