@@ -37,6 +37,7 @@ function App() {
   const [open, setOpen] = useState(false);
   const [cartTotal, setCartTotal] = useState(500);
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined);
+  const [name, setName] = useState('Kasujja');
 
   const totalItems = Array.from(Array(100).keys());
 
@@ -287,7 +288,7 @@ function App() {
                   <div className="grid grid-cols-2 gap-4">
                     <TextField 
                     placeholder="Holla"/>
-                    <TextField />
+                    <TextField name="first_name" value={name} onChange={setName} label="Name"/>
                     <TextField />
                     <TextField />
                     <TextField />
@@ -319,6 +320,7 @@ function App() {
                   />
                   <TextArea
                     label="Your comment"
+                    onChange={(value)=>{}}
                     rows={5}
                     placeholder="Holla we dem boys"
                   />
