@@ -285,7 +285,8 @@ function App() {
                 </Modal> */}
                 <Card header="Create user">
                   <div className="grid grid-cols-2 gap-4">
-                    <TextField />
+                    <TextField 
+                    placeholder="Holla"/>
                     <TextField />
                     <TextField />
                     <TextField />

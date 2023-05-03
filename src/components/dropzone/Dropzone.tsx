@@ -1,11 +1,18 @@
-const Dropzone: React.FC = () => {
+import { mergeClassNames } from "src/utils/utils";
+import classes from "./Dropzone.module.scss";
+
+type DropzoneProps = {
+  hint?: string;
+};
+
+const Dropzone: React.FC<DropzoneProps> = ({ hint }) => {
   return (
-    <div className="flex items-center justify-center w-full">
+    <div className={mergeClassNames(classes.dropzone)}>
       <label
         htmlFor="dropzone-file"
-        className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+        className={mergeClassNames(classes.dropzone_container)}
       >
-        <div className="flex flex-col items-center justify-center pt-5 pb-6">
+        <div className={mergeClassNames(classes.dropzone_hint_container)}>
           <svg
             aria-hidden="true"
             className="w-10 h-10 mb-3 text-gray-400"
@@ -21,12 +28,12 @@ const Dropzone: React.FC = () => {
               d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
             ></path>
           </svg>
-          <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
+          <p className={mergeClassNames(classes.dropzone_hint_action_hint)}>
             <span className="font-semibold">Click to upload</span> or drag and
             drop
           </p>
-          <p className="text-xs text-gray-500 dark:text-gray-400">
-            SVG, PNG, JPG or GIF (MAX. 800x400px)
+          <p className={mergeClassNames(classes.dropzone_hint_action_text)}>
+            {hint ?? "SVG, PNG, JPG or GIF (MAX. 800x400px)"}
           </p>
         </div>
         <input id="dropzone-file" type="file" className="hidden" />
@@ -35,4 +42,4 @@ const Dropzone: React.FC = () => {
   );
 };
 
-export default Dropzone
+export default Dropzone;

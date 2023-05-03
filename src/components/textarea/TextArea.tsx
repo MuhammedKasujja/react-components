@@ -1,14 +1,18 @@
 import { mergeClassNames } from "src/utils/utils";
 import classes from "./TextArea.module.scss";
+import { ChangeEvent } from "react";
 
 type TextAreaProps = {
   rows?: number;
   label: string;
+  onChange(value: string): void;
 };
 
-const TextArea = (
-  props: TextAreaProps & React.ComponentProps<"textarea">
-) => {
+const TextArea = (props: TextAreaProps & Omit<React.ComponentProps<"textarea">, "onChange" >) => {
+  
+  const onValueChage =(event: ChangeEvent<HTMLTextAreaElement>)=>{
+    props.onChange(event.target.value)
+  }
   return (
     <>
       <label
@@ -19,7 +23,7 @@ const TextArea = (
       </label>
       <textarea
         id={props.label}
-        onChange={props.onChange}
+        onChange={onValueChage}
         rows={props.rows ?? 4}
         className={mergeClassNames(classes.textarea, classes.textarea_body)}
         placeholder={props.placeholder}
