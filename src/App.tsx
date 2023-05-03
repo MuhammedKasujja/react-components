@@ -310,7 +310,12 @@ function App() {
                   }
                 >
                   <Dropzone />
-                  <FileInput />
+                  <FileInput
+                    title="Change profile"
+                    hint="PNG, JPEG (500x500) px"
+                    handleChange={(file) => {
+                    }}
+                  />
                   <TextArea
                     label="Your comment"
                     rows={5}
