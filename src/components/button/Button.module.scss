@@ -53,7 +53,7 @@
     }
 
     &_danger{
-        @apply bg-red-500 enabled:hover:bg-red-700 border-[2px] border-red-500 enabled:hover:border-red-700 #{!important};
+        @apply bg-red-500 enabled:hover:bg-red-700 border-[1px] border-red-500 enabled:hover:border-red-700 #{!important};
 
         &.outlined{
             @apply bg-white text-red-700 border-[2px] border-red-500 enabled:hover:bg-red-700 enabled:hover:border-red-700 enabled:hover:text-white #{!important};

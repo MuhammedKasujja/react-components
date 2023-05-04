@@ -37,7 +37,7 @@ function App() {
   const [open, setOpen] = useState(false);
   const [cartTotal, setCartTotal] = useState(500);
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined);
-  const [name, setName] = useState('Kasujja');
+  const [name, setName] = useState("Kasujja");
 
   const totalItems = Array.from(Array(100).keys());
 
@@ -285,16 +285,28 @@ function App() {
                   ))}
                 </Modal> */}
                 <Card header="Create user">
-                  <div className="grid grid-cols-2 gap-4">
-                    <TextField 
-                    placeholder="Holla"/>
-                    <TextField name="first_name" value={name} onChange={setName} label="Name"/>
-                    <TextField />
-                    <TextField />
-                    <TextField />
-                    <TextField />
-                    <TextField />
-                  </div>
+                  <form>
+                    <div className="grid grid-cols-2 gap-4">
+                      <TextField placeholder="Holla" />
+                      <TextField
+                        name="first_name"
+                        value={name}
+                        onChange={setName}
+                        label="Name"
+                      />
+                      <TextField />
+                      <TextField />
+                      <TextField />
+                      <TextField />
+                      <TextField />
+                    </div>
+                    <div className="flex justify-between pt-6">
+                      <Button>SAVE</Button>
+                      <Button outlined variant="danger">
+                        Cancel
+                      </Button>
+                    </div>
+                  </form>
                 </Card>
 
                 <Card
@@ -315,12 +327,11 @@ function App() {
                   <FileInput
                     title="Change profile"
                     hint="PNG, JPEG (500x500) px"
-                    handleChange={(file) => {
-                    }}
+                    handleChange={(file) => {}}
                   />
                   <TextArea
                     label="Your comment"
-                    onChange={(value)=>{}}
+                    onChange={(value) => {}}
                     rows={5}
                     placeholder="Holla we dem boys"
                   />
