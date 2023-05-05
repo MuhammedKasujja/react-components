@@ -1,0 +1,19 @@
+.pagination {
+  @apply flex gap-4 items-center;
+
+  .page_stats{
+    @apply text-gray-500 select-none;
+  }
+
+  .pagination_link {
+    @apply bg-slate-500 py-1 px-3 rounded cursor-pointer select-none text-white ;
+  }
+
+  .btn_previous{
+    @apply cursor-pointer select-none bg-gray-400 py-1 px-3 rounded;
+  }
+
+  .btn_next{
+    @apply cursor-pointer select-none bg-gray-400 py-1 px-3 rounded ;
+  }
+}

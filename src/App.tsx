@@ -263,7 +263,7 @@ function App() {
                 </div> */}
                 <div className="w-full px-10 py-5">
                   <Card>
-                    <Table data={dummyData()} columns={cols} showFooter />
+                    <Table data={dummyData()} columns={cols} showFooter onSearch={(data)=>{}}/>
                     <form
                      onSubmit={(event: React.FormEvent<HTMLFormElement>) => {
                       event.preventDefault();
