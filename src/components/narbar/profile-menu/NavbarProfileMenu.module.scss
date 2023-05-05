@@ -1,0 +1,7 @@
+.right_menu {
+  @apply flex gap-4 items-center;
+
+  .avatar {
+    @apply inline-block h-10 w-10 rounded-full ring-2 ring-white shadow-lg cursor-pointer;
+  }
+}

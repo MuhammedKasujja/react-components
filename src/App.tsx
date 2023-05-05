@@ -20,6 +20,8 @@ import {
   Dropzone,
   FileInput,
   TextArea,
+  RadioButton,
+  RadioGroup,
 } from "./components";
 import Breadcrumb from "./components/breadcrumb/Breadcrumb";
 import { ColumnDef } from "@tanstack/react-table";
@@ -87,7 +89,7 @@ function App() {
 
           {/* Main Content */}
           <div className="flex flex-col w-full">
-            <Navbar />
+            <Navbar profileMenu={<>Kasujja Muhammed</>} />
             <main className="p-4 overflow-y-auto">
               <div className="py-3">
                 <Breadcrumb
@@ -262,6 +264,17 @@ function App() {
                 <div className="w-full px-10 py-5">
                   <Card>
                     <Table data={dummyData()} columns={cols} showFooter />
+                    <RadioButton label="Male" group="data" />
+                    <RadioButton label="Female" group="data" />
+
+                    <RadioGroup
+                      name="gender"
+                      options={[
+                        { label: "Male" },
+                        { label: "Female" },
+                        { label: "Others" },
+                      ]}
+                    />
                   </Card>
                   {/* .... */}
                 </div>
@@ -298,7 +311,67 @@ function App() {
                       <TextField />
                       <TextField />
                       <TextField />
-                      <TextField />
+                      <Select
+                        name="asasa"
+                        options={[
+                          {
+                            label: "aaa",
+                            value: "aaa",
+                          },
+                          {
+                            label: "aaa",
+                            value: "yu",
+                          },
+                          {
+                            label: "aaa",
+                            value: "rtr",
+                          },
+                          {
+                            label: "aaa",
+                            value: "tr",
+                          },
+                          {
+                            label: "aaa",
+                            value: "ee",
+                          },
+                          {
+                            label: "aaa",
+                            value: "ff",
+                          },
+                          {
+                            label: "aaa",
+                            value: "ew",
+                          },
+                          {
+                            label: "aaa",
+                            value: "df",
+                          },
+                          {
+                            label: "aaa",
+                            value: "fdd",
+                          },
+                          {
+                            label: "aaa",
+                            value: "aaa",
+                          },
+                          {
+                            label: "aaa",
+                            value: "yu",
+                          },
+                          {
+                            label: "aaa",
+                            value: "rtr",
+                          },
+                          {
+                            label: "aaa",
+                            value: "tr",
+                          },
+                          {
+                            label: "aaa",
+                            value: "ee",
+                          },
+                        ]}
+                      />
                     </div>
                     <div className="flex justify-between pt-6">
                       <Button>SAVE</Button>

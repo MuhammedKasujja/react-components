@@ -1,4 +1,4 @@
-import SideBarMenuItem from "./SideBarMenuItem";
+import SideBarMenuItem from "./sidebar-menu-item/SideBarMenuItem";
 import menus from "./Menus";
 import { useState } from "react";
 import classes from "./Sidebar.module.scss";

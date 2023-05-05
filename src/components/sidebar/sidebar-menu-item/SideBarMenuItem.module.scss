@@ -1,0 +1,14 @@
+
+$sidebar-menu-color: #464d5c;
+
+.sidebar_menu_item {
+  @apply cursor-pointer  my-2;
+
+  &.sidebar_menu_item_selected {
+    @apply border-solid ring-[1px] ring-[#464d5c] rounded-md bg-[#1a233a];
+
+    &.active {
+      @apply bg-[#464d5c];
+    }
+  }
+}

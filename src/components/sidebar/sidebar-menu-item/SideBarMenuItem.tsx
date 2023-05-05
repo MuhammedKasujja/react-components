@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 // import { useNavigate } from "react-router-dom";
-import { MenuItem } from "./types";
+import { MenuItem } from "../types";
+import { mergeClassNames } from "src/utils/utils";
+import classes from "./SideBarMenuItem.module.scss";
 
 const SideBarMenuItem: React.FC<MenuItem> = (item) => {
   const { icon, name, gate, selected } = item;
@@ -28,12 +30,11 @@ const SideBarMenuItem: React.FC<MenuItem> = (item) => {
   return (
     <>
       <div
-        className={`cursor-pointer  my-2 ${
-          selected
-            ? "border-solid ring-[1px] ring-[#464d5c] border-r-3 rounded-md bg-[#1a233a]"
-            : ""
-        } 
-        ${selected && !item.submenu ? "bg-[#464d5c]" : ""}`}
+        className={mergeClassNames(
+          classes.sidebar_menu_item,
+          selected ? classes.sidebar_menu_item_selected : "",
+          selected && !item.submenu ? classes.active : "",
+        )}
       >
         <div
           className={`flex justify-between p-2 select-none ${
