@@ -22,7 +22,7 @@ import {
   TextArea,
   RadioButton,
   RadioGroup,
-} from "./components";
+} from "src/components";
 import Breadcrumb from "./components/breadcrumb/Breadcrumb";
 import { ColumnDef } from "@tanstack/react-table";
 
@@ -264,17 +264,31 @@ function App() {
                 <div className="w-full px-10 py-5">
                   <Card>
                     <Table data={dummyData()} columns={cols} showFooter />
-                    <RadioButton label="Male" group="data" />
-                    <RadioButton label="Female" group="data" />
+                    <form
+                     onSubmit={(event: React.FormEvent<HTMLFormElement>) => {
+                      event.preventDefault();
+                      const data = new FormData(event.target as HTMLFormElement);
+                      // console.log(event.target, data)
+                      const parsed = Object.fromEntries(data);
+                      console.log('SubmitData',parsed);
+                    }}>
+                    <RadioButton label="Male" group="data"  value={'male'} />
+                    <RadioButton label="Female" group="data" value={'female'}/>
 
                     <RadioGroup
                       name="gender"
                       options={[
-                        { label: "Male" },
-                        { label: "Female" },
-                        { label: "Others" },
+                        { label: "Male", value:'male'},
+                        { label: "Female", value:'female'},
+                        { label: "Others", value:'others'},
                       ]}
+                      value={'others'}
+                      onChange={(e)=>{
+                        console.log('Changed value', e)
+                      }}
                     />
+                    <Button>Save</Button>
+                    </form>
                   </Card>
                   {/* .... */}
                 </div>

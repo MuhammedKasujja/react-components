@@ -1,3 +1,5 @@
+@import '../../styles/mixins.scss';
+
 .radio_button{
     @apply flex items-center;
 
@@ -6,6 +8,7 @@
     }
 
     .label{
-        @apply ml-2 text-sm font-medium text-gray-900 dark:text-gray-300;
+        @include label-default;
+        @apply m-0 ml-2;
     }
 }
