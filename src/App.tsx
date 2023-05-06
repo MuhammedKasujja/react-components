@@ -271,38 +271,6 @@ function App() {
                         console.log({ data });
                       }}
                     />
-                    <form
-                      onSubmit={(event: React.FormEvent<HTMLFormElement>) => {
-                        event.preventDefault();
-                        const data = new FormData(
-                          event.target as HTMLFormElement
-                        );
-                        // console.log(event.target, data)
-                        const parsed = Object.fromEntries(data);
-                        console.log("SubmitData", parsed);
-                      }}
-                    >
-                      <RadioButton label="Male" group="data" value={"male"} />
-                      <RadioButton
-                        label="Female"
-                        group="data"
-                        value={"female"}
-                      />
-
-                      <RadioGroup
-                        name="gender"
-                        options={[
-                          { label: "Male", value: "male" },
-                          { label: "Female", value: "female" },
-                          { label: "Others", value: "others" },
-                        ]}
-                        value={"others"}
-                        onChange={(e) => {
-                          console.log("Changed value", e);
-                        }}
-                      />
-                      <Button>Save</Button>
-                    </form>
                   </Card>
                   {/* .... */}
                 </div>
@@ -399,6 +367,19 @@ function App() {
                             value: "ee",
                           },
                         ]}
+                      />
+
+                      <RadioGroup
+                        name="gender"
+                        options={[
+                          { label: "Male", value: "male" },
+                          { label: "Female", value: "female" },
+                          { label: "Others", value: "others" },
+                        ]}
+                        value={"others"}
+                        onChange={(e) => {
+                          console.log("Changed value", e);
+                        }}
                       />
                     </div>
                     <div className="flex justify-between pt-6">

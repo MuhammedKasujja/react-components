@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { PaginationProps } from "./pagination/Pagination.type";
 import { TableProps } from "./Table.type";
 import TextField from "../textfield/Textfield";
+import ShowItems from "./show-items/ShowItems";
 
 type ISearchQuery = {
   order: string;
@@ -125,9 +126,17 @@ const TableNew = <T extends Object>({
     <div>
       <div>
         <div className="flex justify-between">
-          <p>Show</p>
-          <TextField size="sm"
-          placeholder="search"
+          <ShowItems
+            onSelect={(value) =>
+              setSearchQuery((prevQuery) => ({
+                ...prevQuery,
+                length: value,
+              }))
+            }
+          />
+          <TextField
+            size="sm"
+            placeholder="search"
             onChange={(value) =>
               setSearchQuery((prevQuery) => ({
                 ...prevQuery,
@@ -142,7 +151,7 @@ const TableNew = <T extends Object>({
           onLinkClicked={(link) => {
             setSearchQuery((prevQuery) => ({ ...prevQuery, link }));
           }}
-        ></Pagination>
+        />
       </div>
     </div>
   );
