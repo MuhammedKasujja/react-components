@@ -1,7 +1,7 @@
 import { getCoreRowModel, useReactTable, flexRender } from "@tanstack/react-table"
 import { TableProps } from "./Table.type"
 
-const Table = <T extends Object>({ data, columns, showFooter, showNavigation }: TableProps<T>) => {
+const Table = <T extends Object>({ data, columns, showFooter }: TableProps<T>) => {
 
     const table = useReactTable({
         data,

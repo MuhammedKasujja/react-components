@@ -1,14 +1,16 @@
 import Table from "./Table";
 import Pagination from "./pagination/Pagination";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { PaginationProps } from "./pagination/Pagination.type";
 import { TableProps } from "./Table.type";
+import TextField from "../textfield/Textfield";
 
 type ISearchQuery = {
   order: string;
   column: string;
   length: number;
-  query?: string;
+  query?: Record<string, any>;
+  link?: string;
 };
 
 type ITableProps<T extends Object> = {
@@ -16,12 +18,18 @@ type ITableProps<T extends Object> = {
 } & TableProps<T>;
 //  & Omit<PaginationProps, "">;
 
-
 const TableNew = <T extends Object>({
   data,
   columns,
   onSearch,
 }: ITableProps<T>) => {
+  const [searchQuery, setSearchQuery] = useState<ISearchQuery>({
+    order: "",
+    column: "",
+    length: 10,
+    query: {},
+    link: "",
+  });
   const pagination: PaginationProps = {
     current_page: 1,
     from: 1,
@@ -108,15 +116,31 @@ const TableNew = <T extends Object>({
     to: 10,
     total: 180,
   };
- 
+
+  useEffect(() => {
+    onSearch(searchQuery);
+  }, [searchQuery]);
+
   return (
     <div>
       <div>
+        <div className="flex justify-between">
+          <p>Show</p>
+          <TextField size="sm"
+          placeholder="search"
+            onChange={(value) =>
+              setSearchQuery((prevQuery) => ({
+                ...prevQuery,
+                query: { search_query: value },
+              }))
+            }
+          />
+        </div>
         <Table data={data} columns={columns} />
         <Pagination
           {...pagination}
           onLinkClicked={(link) => {
-            console.log("onLinkClicked", link);
+            setSearchQuery((prevQuery) => ({ ...prevQuery, link }));
           }}
         ></Pagination>
       </div>

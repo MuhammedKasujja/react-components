@@ -19,7 +19,6 @@ const defaultTextFieldProps: TextFieldProps = {
   leftIcon: null,
   rightIcon: null,
   error: false,
-  label: "email",
   onChange: (_) => {},
 };
 

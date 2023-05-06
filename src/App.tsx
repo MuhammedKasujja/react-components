@@ -263,31 +263,45 @@ function App() {
                 </div> */}
                 <div className="w-full px-10 py-5">
                   <Card>
-                    <Table data={dummyData()} columns={cols} showFooter onSearch={(data)=>{}}/>
-                    <form
-                     onSubmit={(event: React.FormEvent<HTMLFormElement>) => {
-                      event.preventDefault();
-                      const data = new FormData(event.target as HTMLFormElement);
-                      // console.log(event.target, data)
-                      const parsed = Object.fromEntries(data);
-                      console.log('SubmitData',parsed);
-                    }}>
-                    <RadioButton label="Male" group="data"  value={'male'} />
-                    <RadioButton label="Female" group="data" value={'female'}/>
-
-                    <RadioGroup
-                      name="gender"
-                      options={[
-                        { label: "Male", value:'male'},
-                        { label: "Female", value:'female'},
-                        { label: "Others", value:'others'},
-                      ]}
-                      value={'others'}
-                      onChange={(e)=>{
-                        console.log('Changed value', e)
+                    <Table
+                      data={dummyData()}
+                      columns={cols}
+                      showFooter
+                      onSearch={(data) => {
+                        console.log({ data });
                       }}
                     />
-                    <Button>Save</Button>
+                    <form
+                      onSubmit={(event: React.FormEvent<HTMLFormElement>) => {
+                        event.preventDefault();
+                        const data = new FormData(
+                          event.target as HTMLFormElement
+                        );
+                        // console.log(event.target, data)
+                        const parsed = Object.fromEntries(data);
+                        console.log("SubmitData", parsed);
+                      }}
+                    >
+                      <RadioButton label="Male" group="data" value={"male"} />
+                      <RadioButton
+                        label="Female"
+                        group="data"
+                        value={"female"}
+                      />
+
+                      <RadioGroup
+                        name="gender"
+                        options={[
+                          { label: "Male", value: "male" },
+                          { label: "Female", value: "female" },
+                          { label: "Others", value: "others" },
+                        ]}
+                        value={"others"}
+                        onChange={(e) => {
+                          console.log("Changed value", e);
+                        }}
+                      />
+                      <Button>Save</Button>
                     </form>
                   </Card>
                   {/* .... */}
