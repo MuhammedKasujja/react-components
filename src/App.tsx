@@ -44,6 +44,11 @@ type User = {
   id: number;
 };
 
+function MyCell(row: any) {
+  console.log({row})
+  return <a href="#" >kdgjkfdjfg</a>
+}
+
 function App() {
   const [checked, setChecked] = useState(false);
   const [open, setOpen] = useState(false);
@@ -72,20 +77,32 @@ function App() {
   const cols = useMemo<ColumnDef<User>[]>(
     () => [
       {
-        header: "Firstname",
-        cell: (row) => (
-          <p className="text-slate-500 font-bold">
-            {row.getValue() as React.ReactNode}
-          </p>
-        ),
-        accessorFn: (row) => row.firstName,
-        footer: "Total",
-      },
-      {
-        header: "Last name",
-        cell: (row) => row.renderValue(),
-        accessorKey: "lastName",
-        footer: () => cartTotal,
+        // header: "Firstname",
+        // cell: (row) => (
+        //   <p className="text-slate-500 font-bold">
+        //     {row.getValue() as React.ReactNode}
+        //   </p>
+        // ),
+        // accessorFn: (row) => row.firstName,
+        // footer: "Total",
+        // {
+        header: "Name",
+        columns: [
+          {
+            header: "First Name",
+            accessorKey: "firstName",
+            cell: (row) => (
+              <p className="text-slate-500 font-bold">
+                {row.getValue() as React.ReactNode}
+              </p>
+            ),
+          },
+          {
+            header: "Last Name",
+            accessorFn: (d) => d.lastName,
+          },
+        ],
+        // }
       },
       {
         header: "Age",
@@ -102,16 +119,37 @@ function App() {
         accessorKey: "dob",
         footer: "Total",
       },
-      {
-        header: "Telephone",
-        cell: (row) => row.renderValue(),
-        accessorKey: "telephone",
-        footer: () => cartTotal,
-      },
+      // {
+      //   header: "Telephone",
+      //   cell: (row) => row.renderValue(),
+      //   accessorKey: "telephone",
+      //   footer: () => cartTotal,
+      // },
       {
         header: "Email",
-        cell: (row) => row.renderValue(),
+        cell: (row) => (
+          <Select
+            size="sm"
+            options={[
+              {
+                label: "Arrea",
+                value: 49,
+              },
+              {
+                label: "Tuf",
+                value: 43,
+              },
+            ]}
+          />
+        ),
         accessorKey: "email",
+      },
+      {
+        header: "Action",
+        cell: MyCell,
+        accessorKey: "telephone",
+        footer: () => cartTotal,
+        getProps: () => ({ someFunc: () => alert("clicked")})
       },
     ],
     [cartTotal]
