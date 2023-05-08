@@ -1,0 +1,45 @@
+.table_main {
+  @apply flex flex-col;
+
+  .table_scroll_container {
+    @apply overflow-x-auto sm:-mx-6 lg:-mx-8;
+
+    .container {
+      @apply min-w-full py-4 inline-block sm:px-6 lg:px-8;
+
+      .table_container {
+        @apply p-2 overflow-hidden;
+
+        .table {
+          @apply min-w-full text-center;
+
+          .table_head {
+            @apply border bg-gray-50 outline-none ;
+
+            .table_head_row {
+
+              .table_row_header {
+                @apply px-6 py-4 text-sm font-medium text-gray-900;
+              }
+            }
+          }
+
+          .table_body {
+
+            .table_body_row {
+              @apply bg-white border-b;
+
+              .table_row_data {
+                @apply px-6 py-4 text-sm font-light text-gray-900 whitespace-nowrap;
+              }
+            }
+          }
+
+          .table_footer {
+            @apply border-t bg-gray-50;
+          }
+        }
+      }
+    }
+  }
+}

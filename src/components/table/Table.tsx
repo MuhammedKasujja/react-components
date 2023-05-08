@@ -4,6 +4,8 @@ import {
   flexRender,
 } from "@tanstack/react-table";
 import { TableProps } from "./Table.type";
+import { mergeClassNames } from "src/utils/utils";
+import classes from "./Table.module.scss";
 
 const Table = <T extends Object>({
   data,
@@ -16,18 +18,18 @@ const Table = <T extends Object>({
     getCoreRowModel: getCoreRowModel(),
   });
   return (
-    <div className="flex flex-col">
-      <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
-        <div className="min-w-full py-4 inline-bloc sm:px-6 lg:px-8">
-          <div className="p-2 overflow-hidden">
-            <table className="min-w-full text-center">
-              <thead className="border-b bg-gray-50">
+    <div className={mergeClassNames(classes.table_main)}>
+      <div className={mergeClassNames(classes.table_scroll_container)}>
+        <div className={mergeClassNames(classes.container)}>
+          <div className={mergeClassNames(classes.table_container)}>
+            <table className={mergeClassNames(classes.table)}>
+              <thead className={mergeClassNames(classes.table_head)}>
                 {table.getHeaderGroups().map((headerGroup) => (
-                  <tr key={headerGroup.id}>
+                  <tr key={headerGroup.id} className={mergeClassNames(classes.table_head_row)}>
                     {headerGroup.headers.map((header) => (
                       <th
                         key={header.id}
-                        className="px-6 py-4 text-sm font-medium text-gray-900"
+                        className={mergeClassNames(classes.table_row_header)}
                       >
                         {header.isPlaceholder
                           ? null
@@ -40,12 +42,12 @@ const Table = <T extends Object>({
                   </tr>
                 ))}
               </thead>
-              <tbody>
+              <tbody className={mergeClassNames(classes.table_body)}>
                 {table.getRowModel().rows.map((row) => (
-                  <tr key={row.id} className="bg-white border-b">
+                  <tr key={row.id} className={mergeClassNames(classes.table_body_row)}>
                     {row.getVisibleCells().map((cell) => (
                       <td
-                        className="px-6 py-4 text-sm font-light text-gray-900 whitespace-nowrap"
+                      className={mergeClassNames(classes.table_row_data)}
                         key={cell.id}
                       >
                         {flexRender(
@@ -58,7 +60,7 @@ const Table = <T extends Object>({
                 ))}
               </tbody>
               {showFooter ? (
-                <tfoot className="border-t bg-gray-50">
+                <tfoot className={mergeClassNames(classes.table_footer)}>
                   {table.getFooterGroups().map((footerGroup) => (
                     <tr key={footerGroup.id}>
                       {footerGroup.headers.map((header) => (
