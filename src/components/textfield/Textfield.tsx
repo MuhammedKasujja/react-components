@@ -45,7 +45,7 @@ const TextField = (
 
   const textfieldId =
     (label && label.toLowerCase().split(" ").join("_")) ??
-    new Date().toString();
+    new Date().getTime().toString();
 
   return (
     <div  className={mergeClassNames(classes.textfield)}>

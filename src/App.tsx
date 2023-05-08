@@ -261,7 +261,6 @@ function App() {
                   </Accordion>
                   <Tabs></Tabs>
                 </div> */}
-                <div className="w-full px-10 py-5">
                   <Card>
                     <Table
                       data={dummyData()}
@@ -272,8 +271,6 @@ function App() {
                       }}
                     />
                   </Card>
-                  {/* .... */}
-                </div>
 
                 <Drawer open={open} onClose={() => setOpen(false)} size="sm">
                   {totalItems.map((i) => (

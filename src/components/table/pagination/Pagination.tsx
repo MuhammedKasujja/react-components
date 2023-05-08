@@ -22,9 +22,6 @@ const Pagination: React.FC<IPaginationProps> = ({
   return (
     <>
       <nav className={mergeClassNames(classes.pagination)}>
-        <span className={mergeClassNames(classes.page_stats)}>
-          Showing {from} - {to} of {total} entries
-        </span>
         <a
           className={mergeClassNames(classes.btn_previous)}
           onClick={(_) => setActivelink(prev_page_url)}
@@ -47,6 +44,9 @@ const Pagination: React.FC<IPaginationProps> = ({
           {">>"}
         </a>
       </nav>
+      <section className={mergeClassNames(classes.pagination)}>
+        <span className={mergeClassNames(classes.page_stats)}>Page {from} - {to} of {total}</span>
+      </section>
     </>
   );
 };

@@ -9,12 +9,12 @@ const SideBar: React.FC = () => {
   const [selectedMenu, setActive] = useState<string | undefined>();
   const { visible } = useSidebarContext()
 
-  const menuContent = menus.map((item) => {
+  const menuContent = menus.map((item, index) => {
     if (item.navheader)
       return (
         <p
           className={mergeClassNames(classes.sidebar, classes.hearder)}
-          key={item.name}
+          key={item.navheader}
         >
           {item.navheader}
         </p>
@@ -28,7 +28,7 @@ const SideBar: React.FC = () => {
             url={item.url!}
             icon={item.icon}
             gate={item.gate}
-            key={item.name}
+            key={index}
             selected={selectedMenu === item.name}
           />
         </div>

@@ -124,35 +124,33 @@ const TableNew = <T extends Object>({
 
   return (
     <div>
-      <div>
-        <div className="flex justify-between">
-          <ShowItems
-            onSelect={(value) =>
-              setSearchQuery((prevQuery) => ({
-                ...prevQuery,
-                length: value,
-              }))
-            }
-          />
-          <TextField
-            size="sm"
-            placeholder="search"
-            onChange={(value) =>
-              setSearchQuery((prevQuery) => ({
-                ...prevQuery,
-                query: { search_query: value },
-              }))
-            }
-          />
-        </div>
-        <Table data={data} columns={columns} />
-        <Pagination
-          {...pagination}
-          onLinkClicked={(link) => {
-            setSearchQuery((prevQuery) => ({ ...prevQuery, link }));
-          }}
+      <div className="flex justify-between flex-wrap gap-2">
+        <ShowItems
+          onSelect={(value) =>
+            setSearchQuery((prevQuery) => ({
+              ...prevQuery,
+              length: value,
+            }))
+          }
+        />
+        <TextField
+          size="sm"
+          placeholder="search"
+          onChange={(value) =>
+            setSearchQuery((prevQuery) => ({
+              ...prevQuery,
+              query: { search_query: value },
+            }))
+          }
         />
       </div>
+      <Table data={data} columns={columns} />
+      <Pagination
+        {...pagination}
+        onLinkClicked={(link) => {
+          setSearchQuery((prevQuery) => ({ ...prevQuery, link }));
+        }}
+      />
     </div>
   );
 };

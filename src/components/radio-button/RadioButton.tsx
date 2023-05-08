@@ -10,8 +10,7 @@ const RadioButton: React.FC<RadioButtonProps> = ({
   checked,
 }) => {
   const radioButtonId = (
-    (label && label.toLowerCase().split(" ").join("_")) ??
-    new Date().toString()
+    label && label.toLowerCase().split(" ").join("_")
   ).concat(group);
   return (
     <>

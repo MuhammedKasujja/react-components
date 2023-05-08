@@ -1,8 +1,8 @@
 .pagination {
-  @apply flex gap-4 items-center;
+  @apply flex gap-4 items-center flex-wrap justify-center mb-2;
 
   .page_stats{
-    @apply text-gray-500 select-none;
+    @apply text-gray-400 select-none;
   }
 
   .pagination_link {
