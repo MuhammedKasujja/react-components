@@ -34,6 +34,16 @@ type TableItem = {
   show: boolean;
 };
 
+type User = {
+  firstName: string;
+  lastName: string;
+  age: number;
+  dob?: string;
+  email?: string;
+  telephone: string;
+  id: number;
+};
+
 function App() {
   const [checked, setChecked] = useState(false);
   const [open, setOpen] = useState(false);
@@ -44,38 +54,64 @@ function App() {
   const totalItems = Array.from(Array(100).keys());
 
   const dummyData = () => {
-    const items = [];
+    const items: User[] = [];
     for (let i = 0; i < 10; i++) {
       items.push({
+        firstName: `firstName ${i}`,
+        lastName: `lastName ${i}`,
+        age: 20 + i,
+        dob: `2020-09- ${i}`,
+        email: `email@me ${i}`,
+        telephone: `telephone ${i}`,
         id: i,
-        name: `Item ${i}`,
-        price: 100,
-        quantity: 1,
-        delete: false,
-        show: true,
       });
     }
     return items;
   };
 
-  const cols = useMemo<ColumnDef<TableItem>[]>(
+  const cols = useMemo<ColumnDef<User>[]>(
     () => [
       {
-        header: "Name",
-        cell: (row) => row.renderValue(),
-        accessorKey: "name",
+        header: "Firstname",
+        cell: (row) => (
+          <p className="text-slate-500 font-bold">
+            {row.getValue() as React.ReactNode}
+          </p>
+        ),
+        accessorFn: (row) => row.firstName,
         footer: "Total",
       },
       {
-        header: "Price",
+        header: "Last name",
         cell: (row) => row.renderValue(),
-        accessorKey: "price",
+        accessorKey: "lastName",
         footer: () => cartTotal,
       },
       {
-        header: "Quantity",
+        header: "Age",
         cell: (row) => row.renderValue(),
-        accessorKey: "quantity",
+        accessorKey: "age",
+      },
+      {
+        header: "DOB",
+        cell: (row) => (
+          <p className="text-red-500 font-medium">
+            {row.getValue() as React.ReactNode}
+          </p>
+        ),
+        accessorKey: "dob",
+        footer: "Total",
+      },
+      {
+        header: "Telephone",
+        cell: (row) => row.renderValue(),
+        accessorKey: "telephone",
+        footer: () => cartTotal,
+      },
+      {
+        header: "Email",
+        cell: (row) => row.renderValue(),
+        accessorKey: "email",
       },
     ],
     [cartTotal]
@@ -261,16 +297,16 @@ function App() {
                   </Accordion>
                   <Tabs></Tabs>
                 </div> */}
-                  <Card>
-                    <Table
-                      data={dummyData()}
-                      columns={cols}
-                      showFooter
-                      onSearch={(data) => {
-                        console.log({ data });
-                      }}
-                    />
-                  </Card>
+                <Card>
+                  <Table
+                    data={dummyData()}
+                    columns={cols}
+                    showFooter
+                    onSearch={(data) => {
+                      console.log({ data });
+                    }}
+                  />
+                </Card>
 
                 <Drawer open={open} onClose={() => setOpen(false)} size="sm">
                   {totalItems.map((i) => (
