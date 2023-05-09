@@ -45,8 +45,8 @@ type User = {
 };
 
 function MyCell(row: any) {
-  console.log({row})
-  return <a href="#" >kdgjkfdjfg</a>
+  console.log({ row });
+  return <a href="#">kdgjkfdjfg</a>;
 }
 
 const pagination = {
@@ -135,7 +135,6 @@ const pagination = {
   to: 10,
   total: 180,
 };
-
 
 function App() {
   const [checked, setChecked] = useState(false);
@@ -237,7 +236,7 @@ function App() {
         cell: MyCell,
         accessorKey: "telephone",
         footer: () => cartTotal,
-        getProps: () => ({ someFunc: () => alert("clicked")})
+        getProps: () => ({ someFunc: () => alert("clicked") }),
       },
     ],
     [cartTotal]
@@ -433,6 +432,12 @@ function App() {
                     }}
                     pagination={pagination}
                   />
+                  <Tabs
+                    tabs={[
+                      { title: "Kato", component: <>Hoola</> },
+                      { title: "Muhammed", component: <>Muhammed</> },
+                    ]}
+                  ></Tabs>
                 </Card>
 
                 <Drawer open={open} onClose={() => setOpen(false)} size="sm">
