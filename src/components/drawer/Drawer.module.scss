@@ -24,7 +24,7 @@
             }
 
             .drawer_close {
-                @apply cursor-pointer
+                @apply cursor-pointer outline-none p-1 rounded hover:bg-[var(--primary-color-100)] hover:text-[var(--primary-color-500)];
             }
         }
 

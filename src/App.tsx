@@ -22,6 +22,7 @@ import {
   TextArea,
   RadioButton,
   RadioGroup,
+  Tooltip,
 } from "src/components";
 import Breadcrumb from "./components/breadcrumb/Breadcrumb";
 import { ColumnDef } from "@tanstack/react-table";
@@ -435,7 +436,10 @@ function App() {
                   <Tabs
                     tabs={[
                       { title: "Kato", component: <>Hoola</> },
-                      { title: "Muhammed", component: <>Muhammed</> },
+                      { title: "Muhammed", component: <>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque perspiciatis fugit, illo quaerat accusantium omnis, voluptates asperiores, quos sequi pariatur voluptatibus necessitatibus est eaque dicta accusamus excepturi laudantium porro maiores.</> },
+                      { title: "Musa", component: <>Hoola</> },
+                      { title: "Joan", component: <>Muhammed</> },
+                      { title: "Mulongo", component: <>Hoola</> },
                     ]}
                   ></Tabs>
                 </Card>
@@ -560,6 +564,7 @@ function App() {
                   header={
                     <div className="flex justify-between">
                       <p>Add User</p>
+                      <Tooltip content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint sit, officiis a ducimus repellat debitis vero sunt, minus veniam architecto rerum dicta eligendi quisquam provident incidunt? Officiis assumenda porro est." direction="top">
                       <Button
                         onClick={() => {
                           setOpen((prev) => !prev);
@@ -567,6 +572,7 @@ function App() {
                       >
                         Open Drawer
                       </Button>
+                      </Tooltip>
                     </div>
                   }
                 >

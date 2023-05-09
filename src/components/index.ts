@@ -16,7 +16,8 @@ export { default as Tabs } from "./tabs/Tabs";
 export { default as Navbar } from "./narbar/Navbar";
 export { default as Table } from "./table";
 export { default as Dropzone } from "./dropzone/Dropzone";
-export { default as FileInput} from "./file-input/FileInput"
-export {default as TextArea} from "./textarea/TextArea"
-export {default as RadioButton} from "./radio-button/RadioButton"
-export {default as RadioGroup} from "./radio-group/RadioGroup"
+export { default as FileInput } from "./file-input/FileInput";
+export { default as TextArea } from "./textarea/TextArea";
+export { default as RadioButton } from "./radio-button/RadioButton";
+export { default as RadioGroup } from "./radio-group/RadioGroup";
+export { default as Tooltip } from "./tooltip/Tooltip";
