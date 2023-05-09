@@ -25,7 +25,10 @@ const Table = <T extends Object>({
             <table className={mergeClassNames(classes.table)}>
               <thead className={mergeClassNames(classes.table_head)}>
                 {table.getHeaderGroups().map((headerGroup) => (
-                  <tr key={headerGroup.id} className={mergeClassNames(classes.table_head_row)}>
+                  <tr
+                    key={headerGroup.id}
+                    className={mergeClassNames(classes.table_head_row)}
+                  >
                     {headerGroup.headers.map((header) => (
                       <th
                         key={header.id}
@@ -44,10 +47,13 @@ const Table = <T extends Object>({
               </thead>
               <tbody className={mergeClassNames(classes.table_body)}>
                 {table.getRowModel().rows.map((row) => (
-                  <tr key={row.id} className={mergeClassNames(classes.table_body_row)}>
+                  <tr
+                    key={row.id}
+                    className={mergeClassNames(classes.table_body_row)}
+                  >
                     {row.getVisibleCells().map((cell) => (
                       <td
-                      className={mergeClassNames(classes.table_row_data)}
+                        className={mergeClassNames(classes.table_row_data)}
                         key={cell.id}
                       >
                         {flexRender(
