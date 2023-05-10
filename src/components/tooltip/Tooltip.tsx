@@ -5,7 +5,7 @@ type TooltipProps = {
   delay?: number;
   direction?: "top" | "left" | "right" | "bottom";
   content: string;
-  children?: React.ReactNode;
+  children: React.ReactNode;
 };
 
 const Tooltip: React.FC<TooltipProps> = (props) => {
@@ -35,10 +35,10 @@ const Tooltip: React.FC<TooltipProps> = (props) => {
       {/* Wrapping */}
       {props.children}
       {active && (
-        <div className={`Tooltip-Tip ${props.direction || "top"}`}>
-          {/* Content */}
-          {props.content}
-        </div>
+          <div className={`Tooltip-Tip ${props.direction || "top"}`}>
+            {/* Content */}
+            {props.content}
+          </div>
       )}
     </div>
   );

@@ -42,6 +42,7 @@ const Drawer = (props: DrawerProps & React.ComponentProps<'div'>) => {
     left: classes.drawer_left,
     right: classes.drawer_right,
   }
+  // const element = document.getElementById('rtc-portal')
 
   useEffect(() => {
     // Disable background scroll when drawer is open

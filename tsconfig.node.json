@@ -5,7 +5,8 @@
     "module": "ESNext",
     "moduleResolution": "Node",
     "allowSyntheticDefaultImports": true,
-    "sourceMap": true
+    "sourceMap": true,
+    // "baseUrl": "./src"
   },
   "include": ["vite.config.ts"]
 }
