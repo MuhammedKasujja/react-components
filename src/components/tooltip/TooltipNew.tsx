@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
+// import "./Tooltip.css";
 
 interface Props {
   content: string;
   children: React.ReactNode;
+  direction?: "top" | "left" | "right" | "bottom";
 }
 
-const Tooltip: React.FC<Props> = ({ content, children }) => {
+const Tooltip: React.FC<Props> = ({ content, children, direction }) => {
   // Position of the bottom edge of the anchor element.
   // Doubles as isVisible state: null means hidden
   const [position, setPosition] = useState<{
@@ -17,6 +19,7 @@ const Tooltip: React.FC<Props> = ({ content, children }) => {
   const handleMouseOver = (e: React.MouseEvent<HTMLElement>) => {
     // Place the tooltip near the anchor's bottom edge on the screen
     const bounds = e.currentTarget.getBoundingClientRect();
+    // console.log({bounds})
     setPosition({
       x: bounds.x,
       y: bounds.y + bounds.height,
@@ -48,15 +51,15 @@ const Tooltip: React.FC<Props> = ({ content, children }) => {
       {position &&
         ReactDOM.createPortal(
           <div
+            className="fixed mr-1 pt-1 mb-8"
             style={{
               top: position.y,
               left: position.x,
-              position: "fixed",
-              paddingTop: 5,
               zIndex: 10,
-              marginRight: '5px'
             }}
+            // className="Tooltip-Wrapper"
           >
+            {/* <div className={`Tooltip-Tip ${direction || "top"}`}> */}
             <div className="p-2 text-sm bg-black text-white rounded">
               {/* content */}
               {content}

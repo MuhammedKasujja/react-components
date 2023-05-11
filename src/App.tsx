@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { HTMLProps, useMemo, useState } from "react";
 import {
   Button,
   Checkbox,
@@ -26,6 +26,8 @@ import {
 } from "src/components";
 import Breadcrumb from "./components/breadcrumb/Breadcrumb";
 import { ColumnDef } from "@tanstack/react-table";
+import React from "react";
+import { TableCheckBox } from "./components/table/TableCheckBox";
 
 type TableItem = {
   name: string;
@@ -44,6 +46,7 @@ type User = {
   telephone: string;
   id: number;
 };
+
 
 function MyCell(row: any) {
   // console.log({ row });
@@ -165,32 +168,39 @@ function App() {
   const cols = useMemo<ColumnDef<User>[]>(
     () => [
       {
-        // header: "Firstname",
-        // cell: (row) => (
-        //   <p className="text-slate-500 font-bold">
-        //     {row.getValue() as React.ReactNode}
-        //   </p>
-        // ),
-        // accessorFn: (row) => row.firstName,
-        // footer: "Total",
-        // {
-        header: "Name",
-        columns: [
-          {
-            header: "First Name",
-            accessorKey: "firstName",
-            cell: (row) => (
-              <p className="text-slate-500 font-bold">
-                {row.getValue() as React.ReactNode}
-              </p>
-            ),
-          },
-          {
-            header: "Last Name",
-            accessorFn: (d) => d.lastName,
-          },
-        ],
-        // }
+        id: "select",
+        header: ({ table }) => (
+          <TableCheckBox
+            {...{
+              checked: table.getIsAllRowsSelected(),
+              indeterminate: table.getIsSomeRowsSelected(),
+              onChange: table.getToggleAllRowsSelectedHandler(),
+            }}
+          />
+        ),
+        cell: ({ row }) => (
+          <TableCheckBox
+            {...{
+              checked: row.getIsSelected(),
+              disabled: !row.getCanSelect(),
+              indeterminate: row.getIsSomeSelected(),
+              onChange: row.getToggleSelectedHandler(),
+            }}
+          />
+        ),
+      },
+      {
+        header: "First Name",
+        accessorKey: "firstName",
+        cell: (row) => (
+          <p className="text-slate-500 font-bold">
+            {row.getValue() as React.ReactNode}
+          </p>
+        ),
+      },
+      {
+        header: "Last Name",
+        accessorFn: (d) => d.lastName,
       },
       {
         header: "Age",
@@ -453,6 +463,11 @@ function App() {
                       { title: "Mulongo", component: <>Hoola</> },
                     ]}
                   ></Tabs>
+                  <Checkbox
+                    size="md"
+                    name="test"
+                    onChange={() => setChecked((prev) => !prev)}
+                  />
                 </Card>
 
                 <Drawer open={open} onClose={() => setOpen(false)} size="sm">
@@ -580,9 +595,9 @@ function App() {
                         // direction="top"
                       >
                         <Button
-                          // onClick={() => {
-                          //   setOpen((prev) => !prev);
-                          // }}
+                        // onClick={() => {
+                        //   setOpen((prev) => !prev);
+                        // }}
                         >
                           Open Drawer
                         </Button>

@@ -6,10 +6,10 @@ import classes from './Checkbox.module.scss'
 type CheckboxProps = {
   label?: string
   size?: 'sm' | 'md' | 'lg'
-  onCheckChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
   defaultChecked?: boolean
   isDisabled?: boolean
-  isChecked?: boolean
+  checked?: boolean
   error?: boolean
   name?: string
 }
@@ -18,9 +18,9 @@ const defaultCheckboxProps: CheckboxProps = {
   label: undefined,
   size: 'md',
   defaultChecked: undefined,
-  onCheckChange: undefined,
+  onChange: undefined,
   isDisabled: undefined,
-  isChecked: undefined,
+  checked: undefined,
   error: undefined,
   name: undefined,
 }
@@ -30,14 +30,14 @@ const Checkbox = (props: CheckboxProps & React.ComponentProps<'div'>) => {
     label,
     size,
     defaultChecked,
-    onCheckChange,
+    onChange,
     isDisabled,
-    isChecked,
+    checked,
     error,
     name,
     ...rest
   } = props
-  const [isCheckboxChecked, setIsCheckboxChecked] = useState(defaultChecked || isChecked)
+  const [isCheckboxChecked, setIsCheckboxChecked] = useState(defaultChecked || checked)
 
   const checkboxSizes = {
     sm: classes.checkbox_sm,
@@ -47,10 +47,10 @@ const Checkbox = (props: CheckboxProps & React.ComponentProps<'div'>) => {
 
   const checkboxId = label && label.toLowerCase().split(' ').join('_')
   const handleCheckChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (isChecked === undefined) {
+    if (checked === undefined) {
       setIsCheckboxChecked(event.target.checked)
     }
-    onCheckChange && onCheckChange(event)
+    onChange && onChange(event)
   }
 
   return (
@@ -70,7 +70,7 @@ const Checkbox = (props: CheckboxProps & React.ComponentProps<'div'>) => {
           onChange={handleCheckChange}
           defaultChecked={defaultChecked}
           disabled={isDisabled}
-          checked={isChecked}
+          checked={checked}
           name={name}
         />
         {isCheckboxChecked && (
