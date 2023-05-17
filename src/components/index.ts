@@ -21,3 +21,4 @@ export { default as TextArea } from "./textarea/TextArea";
 export { default as RadioButton } from "./radio-button/RadioButton";
 export { default as RadioGroup } from "./radio-group/RadioGroup";
 export { default as Tooltip } from "./tooltip/TooltipNew";
+export { default as SearchField } from "./search-field/SearchField";

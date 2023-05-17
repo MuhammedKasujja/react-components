@@ -23,6 +23,7 @@ import {
   RadioButton,
   RadioGroup,
   Tooltip,
+  SearchField,
 } from "src/components";
 import Breadcrumb from "./components/breadcrumb/Breadcrumb";
 import { ColumnDef } from "@tanstack/react-table";
@@ -46,7 +47,6 @@ type User = {
   telephone: string;
   id: number;
 };
-
 
 function MyCell(row: any) {
   // console.log({ row });
@@ -617,6 +617,9 @@ function App() {
                     rows={5}
                     placeholder="Holla we dem boys"
                   />
+                </Card>
+                <Card>
+                  <SearchField />
                 </Card>
                 <Button
                   type="button"
