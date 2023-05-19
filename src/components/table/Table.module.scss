@@ -8,7 +8,7 @@
       @apply min-w-full py-4 inline-block sm:px-6 lg:px-8;
 
       .table_container {
-        @apply p-2 overflow-hidden;
+        @apply py-2 overflow-hidden;
 
         .table {
           @apply min-w-full text-center;

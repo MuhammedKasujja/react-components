@@ -39,7 +39,7 @@ const TableNew = <T extends Object>({
   }, [searchQuery]);
 
   return (
-    <div>
+    <div className="w-full">
       <div className="flex justify-between flex-wrap gap-2">
         <ShowItems
           onSelect={(value) =>
