@@ -1,7 +1,7 @@
 import { mergeClassNames } from "src/utils/utils";
 import classes from "./Dropzone.module.scss";
 import { useDropzone } from "react-dropzone";
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 
 type DropzoneProps = {
   hint?: string;
@@ -9,17 +9,41 @@ type DropzoneProps = {
 };
 
 const Dropzone: React.FC<DropzoneProps> = ({ hint, onFiles }) => {
+  const [files, setFiles] = useState<File[]>([]);
+
   const onDrop = useCallback((acceptedFiles: File[]) => {
     onFiles(acceptedFiles);
+    setFiles(
+      acceptedFiles.map((file) =>
+        Object.assign(file, {
+          preview: URL.createObjectURL(file),
+        })
+      )
+    );
   }, []);
 
   const { getRootProps, getInputProps } = useDropzone({
     noClick: true,
     onDrop,
     accept: {
-      'image/*': []
+      "image/*": [],
     },
   });
+
+  const thumbs = files.map((file) => (
+    <div className={classes.thumbs} key={file.name}>
+      <div className={classes.thumbInner}>
+        <img
+          src={file.preview}
+          // Revoke data uri after image is loaded
+          onLoad={() => {
+            URL.revokeObjectURL(file.preview);
+          }}
+        />
+      </div>
+    </div>
+  ));
+
   return (
     <div className={mergeClassNames(classes.dropzone)}>
       <label
@@ -58,6 +82,7 @@ const Dropzone: React.FC<DropzoneProps> = ({ hint, onFiles }) => {
           {...getInputProps()}
         />
       </label>
+      <div className={classes.thumbs_container}>{thumbs}</div>
     </div>
   );
 };
