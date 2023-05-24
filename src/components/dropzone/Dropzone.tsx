@@ -16,6 +16,9 @@ const Dropzone: React.FC<DropzoneProps> = ({ hint, onFiles }) => {
   const { getRootProps, getInputProps } = useDropzone({
     noClick: true,
     onDrop,
+    accept: {
+      'image/*': []
+    },
   });
   return (
     <div className={mergeClassNames(classes.dropzone)}>
