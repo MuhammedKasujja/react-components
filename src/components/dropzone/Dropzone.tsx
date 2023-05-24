@@ -1,26 +1,51 @@
 import { mergeClassNames } from "src/utils/utils";
 import classes from "./Dropzone.module.scss";
 import { useDropzone } from "react-dropzone";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 type DropzoneProps = {
   hint?: string;
   onFiles(files: File[]): void;
+  multipleFiles?: boolean;
 };
 
-const Dropzone: React.FC<DropzoneProps> = ({ hint, onFiles }) => {
+const defaultProps: DropzoneProps = {
+  hint: "SVG, PNG, JPG or GIF (MAX. 800x400px)",
+  onFiles: (_) => {},
+  multipleFiles: false,
+};
+
+const Dropzone: React.FC<DropzoneProps> = ({
+  hint,
+  onFiles,
+  multipleFiles,
+}) => {
   const [files, setFiles] = useState<File[]>([]);
 
   const onDrop = useCallback((acceptedFiles: File[]) => {
-    onFiles(acceptedFiles);
-    setFiles(
-      acceptedFiles.map((file) =>
-        Object.assign(file, {
-          preview: URL.createObjectURL(file),
-        })
-      )
-    );
+    if (multipleFiles) {
+      setFiles((prevFiles) => [
+        ...prevFiles,
+        ...acceptedFiles.map((file) =>
+          Object.assign(file, {
+            preview: URL.createObjectURL(file),
+          })
+        ),
+      ]);
+    } else {
+      setFiles(
+        acceptedFiles.map((file) =>
+          Object.assign(file, {
+            preview: URL.createObjectURL(file),
+          })
+        )
+      );
+    }
   }, []);
+
+  useEffect(() => {
+    onFiles(files);
+  }, [files]);
 
   const { getRootProps, getInputProps } = useDropzone({
     noClick: true,
@@ -72,7 +97,7 @@ const Dropzone: React.FC<DropzoneProps> = ({ hint, onFiles }) => {
             drop
           </p>
           <p className={mergeClassNames(classes.dropzone_hint_action_text)}>
-            {hint ?? "SVG, PNG, JPG or GIF (MAX. 800x400px)"}
+            {hint}
           </p>
         </div>
         <input
@@ -86,5 +111,7 @@ const Dropzone: React.FC<DropzoneProps> = ({ hint, onFiles }) => {
     </div>
   );
 };
+
+Dropzone.defaultProps = defaultProps;
 
 export default Dropzone;
