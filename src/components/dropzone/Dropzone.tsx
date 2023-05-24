@@ -1,16 +1,28 @@
 import { mergeClassNames } from "src/utils/utils";
 import classes from "./Dropzone.module.scss";
+import { useDropzone } from "react-dropzone";
+import { useCallback } from "react";
 
 type DropzoneProps = {
   hint?: string;
+  onFiles(files: File[]): void;
 };
 
-const Dropzone: React.FC<DropzoneProps> = ({ hint }) => {
+const Dropzone: React.FC<DropzoneProps> = ({ hint, onFiles }) => {
+  const onDrop = useCallback((acceptedFiles: File[]) => {
+    onFiles(acceptedFiles);
+  }, []);
+
+  const { getRootProps, getInputProps } = useDropzone({
+    noClick: true,
+    onDrop,
+  });
   return (
     <div className={mergeClassNames(classes.dropzone)}>
       <label
         htmlFor="dropzone-file"
         className={mergeClassNames(classes.dropzone_container)}
+        {...getRootProps()}
       >
         <div className={mergeClassNames(classes.dropzone_hint_container)}>
           <svg
@@ -36,7 +48,12 @@ const Dropzone: React.FC<DropzoneProps> = ({ hint }) => {
             {hint ?? "SVG, PNG, JPG or GIF (MAX. 800x400px)"}
           </p>
         </div>
-        <input id="dropzone-file" type="file" className="hidden" />
+        <input
+          id="dropzone-file"
+          type="file"
+          className="hidden"
+          {...getInputProps()}
+        />
       </label>
     </div>
   );

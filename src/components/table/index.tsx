@@ -7,8 +7,8 @@ import TextField from "../textfield/Textfield";
 import ShowItems from "./show-items/ShowItems";
 
 type ISearchQuery = {
-  order: string;
-  column: string;
+  order?: string;
+  column?: string;
   length: number;
   query?: Record<string, any>;
   link?: string;
@@ -27,11 +27,11 @@ const TableNew = <T extends Object>({
   pagination,
 }: ITableProps<T>) => {
   const [searchQuery, setSearchQuery] = useState<ISearchQuery>({
-    order: "",
-    column: "",
+    order: undefined,
+    column: undefined,
     length: 10,
-    query: {},
-    link: "",
+    query: undefined,
+    link: undefined,
   });
 
   useEffect(() => {
