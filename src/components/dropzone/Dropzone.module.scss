@@ -2,7 +2,7 @@
   @apply flex items-center justify-center w-full flex-col p-2 border rounded-lg;
 
   .dropzone_container {
-    @apply flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50  dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-800;
+    @apply flex flex-col items-center justify-center w-full h-28 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50  dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-800;
 
     .dropzone_hint {
       &_container {
@@ -23,13 +23,17 @@
     @apply flex flex-row flex-wrap mt-4 w-full;
 
     .thumbs {
-      @apply rounded-sm border border-[#eaeaea] my-2 h-28 w-28 p-1 box-border;
+      @apply rounded-sm border border-[#eaeaea] my-2 h-28 w-28 p-1 box-border relative;
 
       .thumbInner {
         @apply flex min-w-0;
         img {
           @apply block w-auto h-full;
         }
+      }
+
+      .delete_icon{
+        @apply absolute -top-2 -right-2 cursor-pointer;
       }
     }
   }

@@ -434,7 +434,7 @@ function App() {
                   <Tabs></Tabs>
                 </div> */}
                 <Card>
-                  <Table
+                  {/* <Table
                     data={dummyData()}
                     columns={cols}
                     showFooter
@@ -442,8 +442,8 @@ function App() {
                       console.log({ data });
                     }}
                     pagination={pagination}
-                  />
-                  <Tabs
+                  /> */}
+                  {/* <Tabs
                     tabs={[
                       { title: "Kato", component: <>Hoola</> },
                       {
@@ -462,7 +462,7 @@ function App() {
                       { title: "Joan", component: <>Muhammed</> },
                       { title: "Mulongo", component: <>Hoola</> },
                     ]}
-                  ></Tabs>
+                  ></Tabs> */}
                   <Checkbox
                     size="md"
                     name="test"
@@ -607,7 +607,8 @@ function App() {
                 >
                   <Dropzone onFiles={(files) => {
                     console.log({files})
-                  }} />
+                  }} 
+                  multipleFiles/>
                   {/* <FileInput
                     title="Change profile"
                     hint="PNG, JPEG (500x500) px"

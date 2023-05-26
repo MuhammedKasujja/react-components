@@ -23,7 +23,7 @@ const Navbar: React.FC<NavbarProps> = ({ leftMenu, profileMenu }) => {
               console.log({ visible });
             }}
           >
-            <i>&#8694;</i>
+            <span>&#9776;</span>
           </div>
           {leftMenu}
         </div>
